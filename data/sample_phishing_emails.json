@@ -1,0 +1,57 @@
+[
+  {
+    "message_id": "phish-001",
+    "api_key_id": "key_abc123",
+    "sender": "no-reply@paypa1-secure.com",
+    "recipient": "victim@example.com",
+    "subject": "Your PayPal account has been suspended",
+    "reply_to": "support@totally-legit-support.ru",
+    "html_body": "<p>Dear customer, we detected unusual activity. Verify your account within 24 hours. <a href='http://bit.ly/pp-verify-now'>paypal.com/verify</a></p>",
+    "text_body": "",
+    "attachments": []
+  },
+  {
+    "message_id": "phish-002",
+    "api_key_id": "key_def456",
+    "sender": "security@micros0ft-alerts.com",
+    "recipient": "victim@example.com",
+    "subject": "Security Alert: Unauthorized login detected",
+    "reply_to": null,
+    "html_body": "<p>Dear user, confirm your identity and enter your password to secure your account.</p>",
+    "text_body": "",
+    "attachments": ["invoice_details.exe"]
+  },
+  {
+    "message_id": "phish-003",
+    "api_key_id": "key_abc123",
+    "sender": "promo@dealz-xyz.top",
+    "recipient": "victim@example.com",
+    "subject": "Congratulations! You have won a $1000 gift card",
+    "reply_to": null,
+    "html_body": "<p>Dear valued customer, you have won a free gift card. Claim your prize now: <a href='https://tinyurl.com/claim-prize'>click here</a></p>",
+    "text_body": "",
+    "attachments": []
+  },
+  {
+    "message_id": "phish-004",
+    "api_key_id": "key_ghi789",
+    "sender": "docs@docusign-secure-login.click",
+    "recipient": "victim@example.com",
+    "subject": "DocuSign: Document awaiting your signature",
+    "reply_to": "docusign-noreply@mail-relay.click",
+    "html_body": "<p>Dear customer, a document requires your signature via DocuSign. Login to confirm and enter your password.</p>",
+    "text_body": "",
+    "attachments": []
+  },
+  {
+    "message_id": "phish-005",
+    "api_key_id": "key_def456",
+    "sender": "irs-refunds@tax-gov-refund.club",
+    "recipient": "victim@example.com",
+    "subject": "You are eligible for a tax refund",
+    "reply_to": null,
+    "html_body": "<p>Dear customer, you are eligible for a refund via wire transfer. Confirm your ssn and enter your pin to claim unclaimed funds.</p>",
+    "text_body": "",
+    "attachments": []
+  }
+]

@@ -1,0 +1,57 @@
+[
+  {
+    "message_id": "legit-001",
+    "api_key_id": "key_abc123",
+    "sender": "receipts@acmeshop.com",
+    "recipient": "customer@example.com",
+    "subject": "Your order confirmation #48213",
+    "reply_to": "support@acmeshop.com",
+    "html_body": "<p>Hi Jamie, thanks for your order. Your order confirmation is attached. Your order has shipped and your tracking number is 1Z999AA10123456784.</p><p>This is an automated message.</p>",
+    "text_body": "",
+    "attachments": ["receipt.pdf"]
+  },
+  {
+    "message_id": "legit-002",
+    "api_key_id": "key_def456",
+    "sender": "accounts@acmeshop.com",
+    "recipient": "customer@example.com",
+    "subject": "Reset your password",
+    "reply_to": "accounts@acmeshop.com",
+    "html_body": "<p>We received a request to reset your password. Click below to reset your password. If you did not request this, ignore this email.</p><a href='https://acmeshop.com/reset?token=8f7d3'>Reset password</a>",
+    "text_body": "",
+    "attachments": []
+  },
+  {
+    "message_id": "legit-003",
+    "api_key_id": "key_ghi789",
+    "sender": "no-reply@acmeshop.com",
+    "recipient": "customer@example.com",
+    "subject": "Your one-time verification code",
+    "reply_to": "no-reply@acmeshop.com",
+    "html_body": "<p>Your one-time code is 483920. This verification code expires in 10 minutes. This is an automated message.</p>",
+    "text_body": "",
+    "attachments": []
+  },
+  {
+    "message_id": "legit-004",
+    "api_key_id": "key_abc123",
+    "sender": "billing@acmeshop.com",
+    "recipient": "customer@example.com",
+    "subject": "Invoice #INV-2026-0912",
+    "reply_to": "billing@acmeshop.com",
+    "html_body": "<p>Hi Jamie, your invoice # INV-2026-0912 for August is attached. Your receipt is also included for your records.</p>",
+    "text_body": "",
+    "attachments": ["invoice.pdf"]
+  },
+  {
+    "message_id": "legit-005",
+    "api_key_id": "key_def456",
+    "sender": "shipping@acmeshop.com",
+    "recipient": "customer@example.com",
+    "subject": "Your order has shipped!",
+    "reply_to": "support@acmeshop.com",
+    "html_body": "<p>Good news, your shipping confirmation is ready. Tracking number: 9400111899561234567890.</p>",
+    "text_body": "",
+    "attachments": []
+  }
+]
