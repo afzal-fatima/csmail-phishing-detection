@@ -47,3 +47,37 @@ for email in legit_emails:
 
 print()
 print(f"Result: {false_positives}/{len(legit_emails)} legitimate emails incorrectly flagged")
+
+print()
+print("=" * 60)
+print("DOMAIN WARM-UP DEMO")
+print("=" * 60)
+
+from datetime import date, timedelta
+from app.warmup.warmup_manager import WarmupManager
+
+manager = WarmupManager()
+
+# A brand new domain, just added today
+manager.add_domain("newsender.acmeshop.com")
+print("New domain status:", manager.get_status("newsender.acmeshop.com"))
+
+# A domain with 10 days of healthy sending history
+start = date.today() - timedelta(days=10)
+manager.add_domain("marketing.acmeshop.com", started_on=start)
+day = start
+while day <= date.today():
+    manager.record_send_result("marketing.acmeshop.com", sent=30, bounced=1, on_day=day)
+    manager.evaluate_and_advance("marketing.acmeshop.com", on_day=day)
+    day += timedelta(days=1)
+print("Healthy domain (10 days) status:", manager.get_status("marketing.acmeshop.com"))
+
+# A domain with a high bounce rate — should be held back
+manager.add_domain("risky.acmeshop.com", started_on=start)
+day = start
+while day <= date.today():
+    manager.record_send_result("risky.acmeshop.com", sent=100, bounced=20, on_day=day)
+    result = manager.evaluate_and_advance("risky.acmeshop.com", on_day=day)
+    day += timedelta(days=1)
+print("Risky domain (10 days, high bounces) status:", manager.get_status("risky.acmeshop.com"))
+print("Hold reason:", result["reason"])
