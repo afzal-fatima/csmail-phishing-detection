@@ -1,6 +1,7 @@
 import json
 from app.models import ParsedEmail
 from app.detection.detector import PhishingDetector
+from app.dkim_dmarc.validator import DkimDmarcValidator
 
 
 def load_emails(filepath):
@@ -81,3 +82,16 @@ while day <= date.today():
     day += timedelta(days=1)
 print("Risky domain (10 days, high bounces) status:", manager.get_status("risky.acmeshop.com"))
 print("Hold reason:", result["reason"])
+
+print()
+print("=" * 60)
+print("DKIM / DMARC VALIDATION")
+print("=" * 60)
+
+validator = DkimDmarcValidator()
+result = validator.validate_domain("google.com", "20230601")
+
+print(f"Domain: {result['domain']}")
+print(f"DKIM: {'PASS' if result['dkim']['passed'] else 'FAIL'} — {result['dkim']['explanation']}")
+print(f"DMARC: {'PASS' if result['dmarc']['passed'] else 'FAIL'} — {result['dmarc']['explanation']}")
+print(f"Overall: {'PASS' if result['overall_pass'] else 'FAIL'}")
