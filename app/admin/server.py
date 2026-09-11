@@ -2,6 +2,7 @@ from flask import Flask, render_template_string
 import json
 from app.models import ParsedEmail
 from app.detection.detector import PhishingDetector
+from app.dkim_dmarc.validator import DkimDmarcValidator
 
 app = Flask(__name__)
 
@@ -45,6 +46,18 @@ PAGE_TEMPLATE = """
     </tr>
     {% endfor %}
   </table>
+    <h2>DKIM / DMARC Validation</h2>
+  <table>
+    <tr><th>Domain</th><th>DKIM</th><th>DMARC</th><th>Overall</th></tr>
+    {% for r in dkim_dmarc_results %}
+    <tr>
+      <td>{{ r.domain }}</td>
+      <td>{{ 'PASS' if r.dkim.passed else 'FAIL: ' + r.dkim.explanation }}</td>
+      <td>{{ 'PASS' if r.dmarc.passed else 'FAIL: ' + r.dmarc.explanation }}</td>
+      <td>{{ 'PASS' if r.overall_pass else 'FAIL' }}</td>
+    </tr>
+    {% endfor %}
+  </table>
 </body>
 </html>
 """
@@ -68,8 +81,11 @@ def dashboard():
             "hits": result["hits"],
         })
     results.sort(key=lambda r: r["score"], reverse=True)
-
-    return render_template_string(PAGE_TEMPLATE, results=results)
+    validator = DkimDmarcValidator()
+    dkim_dmarc_results = [
+      validator.validate_domain("google.com", "20230601"),
+    ]
+    return render_template_string(PAGE_TEMPLATE, results=results, dkim_dmarc_results=dkim_dmarc_results)
 
 
 if __name__ == "__main__":
